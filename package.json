@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "homepage": "https://github.com/kavya-reddii/Portfolio.git",
+    "homepage": "https://kavya-reddii.github.io/Portfolio",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

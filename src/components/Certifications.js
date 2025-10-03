@@ -16,48 +16,48 @@ const certifications = [
   {
     id: 1,
     title: "Angular with Typescript",
-    imageUrl: './certificates/Screenshot 2025-10-11 123434.png',
+    imageUrl: '/certificates/Screenshot 2025-10-11 123434.png',
     
   },
   {
     id: 2,
     title: "IBM DevOps and Software Engineering",
-    imageUrl: "./certificates/Screenshot 2025-10-11 123501.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123501.png",
     
   },
   {
     id: 3,
     title: "AICTE Web Full Stack Developer",
-    imageUrl: "./certificates/Screenshot 2025-10-11 123548.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123548.png",
     
   },
   {
     id: 4,
     title: "Salesforce Developer Virtual Internship",
-    imageUrl: "./certificates/Screenshot 2025-10-11 123632.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123632.png",
    
   },
   {
     id: 5,
     title: "CISCO NetAcad Cybersecurity Essentials",
-    imageUrl: "./certificates/Screenshot 2025-10-11 123529.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123529.png",
   },
   {
     id: 6,
     title: "CISCO NetAcad Networking Essentials",
-    imageUrl: "./certificates/Screenshot 2025-10-11 123612.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123612.png",
    
   },
    {
     id: 7,
     title: "Infosys Certified L2 Junior Java Programmer",
-    imageUrl: "./certificates/Screenshot 2025-10-11 130157.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 130157.png",
    
   },
    {
     id: 8,
     title: "Infosys Certified Database and SQL Professional",
-    imageUrl: "./certificates/Screenshot 2025-10-11 130223.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 130223.png",
    
   },
 ];

@@ -20,7 +20,7 @@ const experiences = [
     description: [
       'Hands-on experience in Java Spring Boot, DBMS, AngularJS, ReactJS',
     ],
-    logoUrl: 'logo.jpg', // replace with your actual logo path
+    logoUrl: '/logo.jpg', // replace with your actual logo path
   },
   {
     role: 'Systems Engineer Internship',
@@ -30,7 +30,7 @@ const experiences = [
     description: [
       'Built RESTful APIs, deployed full-stack applications',
     ],
-    logoUrl: 'logo.jpg', // replace if different
+    logoUrl: '/logo.jpg', // replace if different
   },
 ];
 
