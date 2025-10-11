@@ -1099,8 +1099,7 @@ footer {
   transform: scale(1.12);
 }
 
-.arrow-btn.left { /* optional for left-specific styles */ }
-.arrow-btn.right { /* optional for right-specific styles */ }
+
 
 @media (max-width: 600px) {
   .arrow-btn {

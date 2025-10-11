@@ -11,7 +11,7 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <Router basename="/Portfolio">
+    <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
