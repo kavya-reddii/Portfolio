@@ -16,7 +16,7 @@ const certifications = [
   {
     id: 1,
     title: "Angular with Typescript",
-    imageUrl: '/Portfolio/certificates/Screenshot 2025-10-11 123434.png',
+    imageUrl: '${process.env.PUBLIC_URL}/certificates/Screenshot 2025-10-11 123434.png',
     
   },
   {
