@@ -64,10 +64,11 @@ const certifications = [
 
 export default function Certifications() {
   const navigate = useNavigate();
-    const currentPath = window.location.pathname;
-    const idx = pageOrder.indexOf(currentPath);
-    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+    const normalizedPath = window.location.pathname.replace(/\/$/, "");
+const idx = pageOrder.indexOf(normalizedPath);
+const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
+const nextPath = idx >= 0 && idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+
   const [selected, setSelected] = useState(null);
 
   function toggleSelection(id) {
