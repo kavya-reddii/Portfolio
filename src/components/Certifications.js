@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const pageOrder = [
-  "/",          // Home
-  "/about",
-  "/skills",
-  "/experience",
-  "/projects",
-  "/certifications",
-  "/contact"
+  "/Portfolio",          // Home
+  "/Portfolio/about",
+  "/Portfolio/skills",
+  "/Portfolio/experience",
+  "/Portfolio/projects",
+  "/Portfolio/certifications",
+  "/Portfolio/contact"
 ];
 
 
@@ -16,7 +16,7 @@ const certifications = [
   {
     id: 1,
     title: "Angular with Typescript",
-    imageUrl: '${process.env.PUBLIC_URL}/certificates/Screenshot 2025-10-11 123434.png',
+    imageUrl: '/Portfolio/certificates/Screenshot 2025-10-11 123434.png',
     
   },
   {
