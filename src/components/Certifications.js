@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const pageOrder = [
-  "/Portfolio",          // Home
-  "/Portfolio/about",
-  "/Portfolio/skills",
-  "/Portfolio/experience",
-  "/Portfolio/projects",
-  "/Portfolio/certifications",
-  "/Portfolio/contact"
+  "/",          // Home
+  "/about",
+  "/skills",
+  "/experience",
+  "/projects",
+  "/certifications",
+  "/contact"
 ];
 
 
@@ -16,59 +16,58 @@ const certifications = [
   {
     id: 1,
     title: "Angular with Typescript",
-    imageUrl: '/Portfolio/certificates/Screenshot 2025-10-11 123434.png',
+    imageUrl: '/certificates/Screenshot 2025-10-11 123434.png',
     
   },
   {
     id: 2,
     title: "IBM DevOps and Software Engineering",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 123501.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123501.png",
     
   },
   {
     id: 3,
     title: "AICTE Web Full Stack Developer",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 123548.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123548.png",
     
   },
   {
     id: 4,
     title: "Salesforce Developer Virtual Internship",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 123632.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123632.png",
    
   },
   {
     id: 5,
     title: "CISCO NetAcad Cybersecurity Essentials",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 123529.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123529.png",
   },
   {
     id: 6,
     title: "CISCO NetAcad Networking Essentials",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 123612.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 123612.png",
    
   },
    {
     id: 7,
     title: "Infosys Certified L2 Junior Java Programmer",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 130157.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 130157.png",
    
   },
    {
     id: 8,
     title: "Infosys Certified Database and SQL Professional",
-    imageUrl: "/Portfolio/certificates/Screenshot 2025-10-11 130223.png",
+    imageUrl: "/certificates/Screenshot 2025-10-11 130223.png",
    
   },
 ];
 
 export default function Certifications() {
   const navigate = useNavigate();
-    const normalizedPath = window.location.pathname.replace(/\/$/, "");
-const idx = pageOrder.indexOf(normalizedPath);
-const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-const nextPath = idx >= 0 && idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
-
+    const currentPath = window.location.pathname;
+    const idx = pageOrder.indexOf(currentPath);
+    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
+    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
   const [selected, setSelected] = useState(null);
 
   function toggleSelection(id) {
