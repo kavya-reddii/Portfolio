@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -11,63 +11,58 @@ const pageOrder = [
   "/contact"
 ];
 
-
 const certifications = [
   {
     id: 1,
     title: "Angular with Typescript",
-    imageUrl: '/certificates/Screenshot 2025-10-11 123434.png',
-    
+    imageUrl: process.env.PUBLIC_URL + '/certificates/Screenshot 2025-10-11 123434.png',
   },
   {
     id: 2,
     title: "IBM DevOps and Software Engineering",
-    imageUrl: "/certificates/Screenshot 2025-10-11 123501.png",
-    
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 123501.png",
   },
   {
     id: 3,
     title: "AICTE Web Full Stack Developer",
-    imageUrl: "/certificates/Screenshot 2025-10-11 123548.png",
-    
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 123548.png",
   },
   {
     id: 4,
     title: "Salesforce Developer Virtual Internship",
-    imageUrl: "/certificates/Screenshot 2025-10-11 123632.png",
-   
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 123632.png",
   },
   {
     id: 5,
     title: "CISCO NetAcad Cybersecurity Essentials",
-    imageUrl: "/certificates/Screenshot 2025-10-11 123529.png",
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 123529.png",
   },
   {
     id: 6,
     title: "CISCO NetAcad Networking Essentials",
-    imageUrl: "/certificates/Screenshot 2025-10-11 123612.png",
-   
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 123612.png",
   },
-   {
+  {
     id: 7,
     title: "Infosys Certified L2 Junior Java Programmer",
-    imageUrl: "/certificates/Screenshot 2025-10-11 130157.png",
-   
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 130157.png",
   },
-   {
+  {
     id: 8,
     title: "Infosys Certified Database and SQL Professional",
-    imageUrl: "/certificates/Screenshot 2025-10-11 130223.png",
-   
+    imageUrl: process.env.PUBLIC_URL + "/certificates/Screenshot 2025-10-11 130223.png",
   },
 ];
 
 export default function Certifications() {
   const navigate = useNavigate();
-    const currentPath = window.location.pathname;
-    const idx = pageOrder.indexOf(currentPath);
-    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const idx = pageOrder.indexOf(currentPath);
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
+
   const [selected, setSelected] = useState(null);
 
   function toggleSelection(id) {
@@ -75,7 +70,7 @@ export default function Certifications() {
   }
 
   return (
-    <section id="certifications" className="certifications fullpage colorful-bg"><br></br><br></br>
+    <section id="certifications" className="certifications fullpage colorful-bg"><br /><br />
       <h2>Certifications</h2>
       <div className="cert-list">
         {certifications.map(cert => (
@@ -88,14 +83,13 @@ export default function Certifications() {
             {selected === cert.id && (
               <div className="cert-viewer">
                 <img src={cert.imageUrl} alt={`${cert.title} certificate`} />
-                
               </div>
             )}
           </div>
         ))}
       </div>
-      <br></br>
-       <div className="arrow-navigation">
+      <br />
+      <div className="arrow-navigation">
         <button className="arrow-btn left" onClick={() => navigate(prevPath)} aria-label="Previous page">
           &#8592;
         </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -10,7 +10,6 @@ const pageOrder = [
   "/certifications",
   "/contact"
 ];
-
 
 const projects = [
   {
@@ -32,12 +31,14 @@ const projects = [
 
 export default function Projects() {
   const navigate = useNavigate();
-    const currentPath = window.location.pathname;
-    const idx = pageOrder.indexOf(currentPath);
-    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+  const location = useLocation();
+  const currentPath = location.pathname;  // useLocation instead of window.location
+  const idx = pageOrder.indexOf(currentPath);
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
+
   return (
-    
     <section id="projects" className="projects colorful-bg">
       <h2>Projects</h2>
       {projects.map((project, idx) => (
@@ -53,7 +54,7 @@ export default function Projects() {
           <p>{project.description}</p>
         </div>
       ))}
-       <div className="arrow-navigation">
+      <div className="arrow-navigation">
         <button className="arrow-btn left" onClick={() => navigate(prevPath)} aria-label="Previous page">
           &#8592;
         </button>

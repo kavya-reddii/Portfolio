@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -11,20 +11,21 @@ const pageOrder = [
   "/contact"
 ];
 
-
 const timelineData = [
-  { id: 1, title: '10th', institution: "Vowel Techlan School",score:'10.0/10.0', year: '2010', position: 'start' },
-  { id: 2, title: '12th', institution: 'Vowel Junior College',score:'97.8%', year: '2014' },
-  { id: 3, title: 'Graduation', institution: 'Sree Vidyanikethan Engineering College',score:'9.4/10.0' ,year: '2025' },
-  { id: 4, title: 'Current Work', institution: 'Infosys Ltd.', year: '2025-Present',score:'System Engineer', position: 'end' },
+  { id: 1, title: '10th', institution: "Vowel Techlan School", score: '10.0/10.0', year: '2019', position: 'start' },
+  { id: 2, title: '12th', institution: 'Vowel Junior College', score: '97.8%', year: '2021' },
+  { id: 3, title: 'Graduation', institution: 'Sree Vidyanikethan Engineering College', score: '9.4/10.0', year: '2025' },
+  { id: 4, title: 'Current Work', institution: 'Infosys Ltd.', year: '2025-Present', score: 'System Engineer', position: 'end' },
 ];
 
 export default function About() {
   const navigate = useNavigate();
-  const currentPath = window.location.pathname;
+  const location = useLocation();
+  const currentPath = location.pathname;
   const idx = pageOrder.indexOf(currentPath);
-  const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-  const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
@@ -32,8 +33,6 @@ export default function About() {
       <h2>About Me</h2>
       <p>A passionate Systems Engineer at Infosys specializing in scalable full-stack development and algorithmic problem-solving.</p>
       <p>Primarily skilled in Java, Spring Boot, Angular</p>
-
-     
 
       <div className="timeline-container">
         {timelineData.map((item, idx) => (
@@ -69,7 +68,7 @@ export default function About() {
           </div>
         ))}
       </div>
-       <div className="arrow-navigation">
+      <div className="arrow-navigation">
         <button className="arrow-btn left" onClick={() => navigate(prevPath)} aria-label="Previous page">
           &#8592;
         </button>

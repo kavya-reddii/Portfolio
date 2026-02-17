@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -12,13 +12,15 @@ const pageOrder = [
   "/contact"
 ];
 
-
 export default function Contact() {
   const navigate = useNavigate();
-    const currentPath = window.location.pathname;
-    const idx = pageOrder.indexOf(currentPath);
-    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const idx = pageOrder.indexOf(currentPath);
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
+
   const formRef = useRef();
   const [status, setStatus] = useState('');
 
@@ -29,7 +31,7 @@ export default function Contact() {
       'service_g3h2ivl',    // <-- replace with your EmailJS Service ID
       'template_eecykb6',   // <-- replace with your EmailJS Template ID
       formRef.current,
-      '083cMvfSm4ddps-Ns'        // <-- replace with your EmailJS Public Key
+      '083cMvfSm4ddps-Ns'         // <-- replace with your EmailJS Public Key
     ).then(() => {
       setStatus('Message sent!');
       setTimeout(() => setStatus(''), 3000);

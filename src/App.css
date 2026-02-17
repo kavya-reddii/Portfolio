@@ -395,6 +395,82 @@ footer {
 
 
 
+@media (max-width: 600px) {
+  .timeline-container {
+    flex-direction: column;
+    max-width: 90%;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .timeline-item {
+    width: 100% !important; /* full width */
+    flex: none; /* disable flex-grow/shrink */
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    box-shadow: 0 0 10px #ff69b4aa;
+  }
+
+  .timeline-item:hover {
+    transform: none; /* disable upward lift on hover */
+  }
+
+  .timeline-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #222;
+    flex: 1;
+  }
+
+  .timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 20px; /* align line with dot */
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff69b4, #a3bffa);
+    z-index: -1;
+    transform: none;
+    border-radius: 2px;
+  }
+
+  .timeline-line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    height: 10px;
+    border-radius: 2px;
+    background: #a3bffa;
+  }
+
+  .timeline-item.end .timeline-line {
+    height: 50%;
+    bottom: 0;
+    width: 4px;
+    left: 20px;
+  }
+
+  .timeline-card {
+    position: static;
+    margin-left: 52px;
+    white-space: normal;
+  }
+}
+
+
+
 
 .cards-vertical-container {
   display: flex;

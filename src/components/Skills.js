@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -11,20 +11,21 @@ const pageOrder = [
   "/contact"
 ];
 
-
 function splitArrayInTwo(arr) {
   const half = Math.ceil(arr.length / 2);
   return [arr.slice(0, half), arr.slice(half)];
 }
 
-
 export default function Skills() {
   const navigate = useNavigate();
-    const currentPath = window.location.pathname;
-    const idx = pageOrder.indexOf(currentPath);
-    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
-   const [animate, setAnimate] = useState(false);
+  const location = useLocation();
+  const currentPath = location.pathname;  // Use location.pathname instead of window.location.pathname
+  const idx = pageOrder.indexOf(currentPath);
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
+
+  const [animate, setAnimate] = useState(false);
   const skillsData = [
     {
       title: 'Languages',
@@ -55,7 +56,7 @@ export default function Skills() {
     },
   ];
 
-   useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => setAnimate(true), 200);
     return () => clearTimeout(timer);
   }, []);
@@ -85,7 +86,7 @@ export default function Skills() {
           );
         })}
       </div>
-       <div className="arrow-navigation">
+      <div className="arrow-navigation">
         <button className="arrow-btn left" onClick={() => navigate(prevPath)} aria-label="Previous page">
           &#8592;
         </button>

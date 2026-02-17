@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -36,17 +36,20 @@ const experiences = [
 
 export default function Experience() {
   const navigate = useNavigate();
-    const currentPath = window.location.pathname;
-    const idx = pageOrder.indexOf(currentPath);
-    const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-    const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+  const location = useLocation();  // useLocation hook
+  const currentPath = location.pathname; // use location.pathname
+  const idx = pageOrder.indexOf(currentPath);
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
+
   return (
     <section id="experience" className="experience colorful-bg">
       <h2>Experience</h2>
       <div className="exp-cards-container">
         {experiences.map((exp, index) => (
           <div key={index} className="exp-card">
-            <img src={exp.logoUrl} alt={`${exp.company} logo`} className="exp-logo" />
+            <img src={process.env.PUBLIC_URL + "/logo.jpg"} alt={`${exp.company} logo`} className="exp-logo" />
             <div className="exp-details">
               <h3>{exp.role}</h3>
               <p className="exp-company">{`${exp.company}, ${exp.location}`}</p>
@@ -60,7 +63,7 @@ export default function Experience() {
           </div>
         ))}
       </div>
-       <div className="arrow-navigation">
+      <div className="arrow-navigation">
         <button className="arrow-btn left" onClick={() => navigate(prevPath)} aria-label="Previous page">
           &#8592;
         </button>

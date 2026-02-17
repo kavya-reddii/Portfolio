@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pageOrder = [
   "/",          // Home
@@ -13,17 +13,20 @@ const pageOrder = [
 
 export default function Hero() {
   const navigate = useNavigate();
-  const currentPath = window.location.pathname;
+  const location = useLocation();
+  const currentPath = location.pathname;  // Use location.pathname instead of window.location.pathname
   const idx = pageOrder.indexOf(currentPath);
-  const prevPath = idx > 0 ? pageOrder[idx - 1] : pageOrder[pageOrder.length - 1];
-  const nextPath = idx < pageOrder.length - 1 ? pageOrder[idx + 1] : pageOrder[0];
+  const validIndex = idx === -1 ? 0 : idx;
+  const prevPath = validIndex > 0 ? pageOrder[validIndex - 1] : pageOrder[pageOrder.length - 1];
+  const nextPath = validIndex < pageOrder.length - 1 ? pageOrder[validIndex + 1] : pageOrder[0];
+
   return (
     <section id="hero" className="hero fullpage">
       <div className="profile-pic-container">
         <img 
-          src="Profilepic.jpg" 
-          alt="Kavya Mandi" 
-          className="profile-pic"
+           src={process.env.PUBLIC_URL + "/Profilepic.jpg"}
+           alt="Kavya Mandi" 
+           className="profile-pic"
         />
       </div>
       <div className="hero-content-animated">
