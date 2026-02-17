@@ -72,6 +72,7 @@ export default function Certifications() {
   return (
     <section id="certifications" className="certifications fullpage colorful-bg"><br /><br />
       <h2>Certifications</h2>
+      <h6>(Click to view)</h6>
       <div className="cert-list">
         {certifications.map(cert => (
           <div
